@@ -9,15 +9,17 @@
   </head>
 
   <body>
-    <h1> Twitoff is cool! </h1>
+    <h1> Compare the tweets of two Twitter Users! </h1>
   <article class="flex two" style="padding: 3em 1em;">
   {% block content %}
   <form action="/user" method="post">
+    <h2> Input a twitter handle without the @ </h2>
     <input type="text" name="user_name" placeholder="User to add">
     <input type="submit" value="Add User">
   </form>
 
   <form action="/compare" method="post">
+    <h2> Select two users to compare </h2>
     <select name="user1">
       {% for user in users %}
       <option value="{{ user.name }}">{{ user.name }}</option>
@@ -28,6 +30,8 @@
       <option value="{{ user.name }}">{{ user.name }}</option>
       {% endfor %}
     </select>
+    <h2> Input text to determine which user is more likely to
+         say that tweet</h2>
     <input type="text" name="tweet_text" placeholder="Tweet text to predict">
     <input type="submit" value="Compare Users">
   </form>
