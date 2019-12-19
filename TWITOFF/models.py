@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 DB = SQLAlchemy()
 
 class User(DB.Model):
-    """Twitter user"""
+    """Twitter users that we analyze"""
     id = DB.Column(DB.BigInteger, primary_key=True)
     name = DB.Column(DB.String(15), nullable=False)
     newest_tweet_id = DB.Column(DB.BigInteger)
@@ -11,7 +11,7 @@ class User(DB.Model):
         return '<User {}>'.format(self.name)
 
 class Tweet(DB.Model):
-    """Tweet"""
+    """Tweets we pull"""
     id = DB.Column(DB.BigInteger, primary_key=True)
     text = DB.Column(DB.Unicode(300))
     user_id = DB.Column(DB.BigInteger, DB.ForeignKey('user.id'), nullable=False)
