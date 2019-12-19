@@ -43,12 +43,14 @@ def create_app():
             if request.method == 'POST':
                 add_or_update_user(name)
                 message = "User {} successfully added".format(name)
-            tweets = User.query.filter(User.name == name).one().tweets
+            user0 = User.query.filter(User.name == name).one()
+            tweets = user0.tweets
+            pic = user0.picture
         except Exception as e:
             message = "Error adding {}: {}".format(name,e)
             tweets = []
         return render_template('user.html', title=name, tweets=tweets,
-        message=message)
+        message=message, picture=pic)
 
     @app.route('/compare', methods=['POST'])
     def compare(message=''):
