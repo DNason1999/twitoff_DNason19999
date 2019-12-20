@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+<form action = '/'> 
+    <input type="submit" value="Return to Homepage">
+</form>
+
 <div id="prediction">
   <h2>{{ title }} </h2>
   <p>{{ message }}</p>
 </div>
 {% endblock %}
 
-<form action = '/'> 
-    <input type="submit" value="Return to Homepage">
-</form>
