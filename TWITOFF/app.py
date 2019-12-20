@@ -49,6 +49,7 @@ def create_app():
         except Exception as e:
             message = "Error adding {}: {}".format(name,e)
             tweets = []
+            pic = "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"
         return render_template('user.html', title=name, tweets=tweets,
         message=message, picture=pic)
 
