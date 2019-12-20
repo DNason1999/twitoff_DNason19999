@@ -18,8 +18,11 @@ def add_or_update_user(username):
     """Add or update a user and their tweets, or else give error"""
     try:
         twitter_user=TWITTER.get_user(username)
+        pic_url = twitter_user.profile_image_url_https.replace('\\','')
+        pic_url = pic_url.replace('_normal','')
+        print(pic_url)
         db_user=(User.query.get(twitter_user.id) or
-        User(id=twitter_user.id, name=username))
+        User(id=twitter_user.id, name=username, picture=pic_url))
         DB.session.add(db_user)
         tweets = twitter_user.timeline(count=200, exclude_replies=True,
         include_rts=False, tweet_mode='extended',
